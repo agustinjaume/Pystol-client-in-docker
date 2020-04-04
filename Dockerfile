@@ -11,7 +11,6 @@ ARG PYSTOL_LOG=/var/log/
 RUN echo "root:root" | chpasswd
 USER root
 ENV  PYSTOL_LOG  $PYSTOL_LOG
-
 RUN yum upgrade -y
 RUN yum install python3 python3-pip git -y
 RUN yum install  virtualenv -y
@@ -19,17 +18,16 @@ RUN yum install  virtualenv -y
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin
-RUN pip3 install  cryptography==2.7 --user
-RUN pip3 install ansible==2.9.6  --user
-RUN pip3 install hvac --user
-RUN pip3 install boto --user
-RUN pip3 install pystol --upgrade --force
+RUN pip3 install  cryptography==2.7 
+RUN pip3 install ansible==2.9.6  
+RUN pip3 install hvac 
+RUN pip3 install boto 
+RUN pip3 install pystol 
+RUN env
+RUN mkdir /kubeconfig
+RUN mkdir .kube
 VOLUME $PYSTOL_LOG
 
-
-
-# We install the operator and dependencies
-RUN echo "The pystol revision is ${revision}"
 # Configure Ansible inventory
 RUN mkdir /etc/ansible/ /ansible
 RUN echo "localhost ansible_connection=local" >> /etc/ansible/hosts

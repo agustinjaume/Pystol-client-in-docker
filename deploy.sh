@@ -7,4 +7,11 @@ echo  "docker rm  pystol-client"
 docker rmi pystol-client
 docker build -t "pystol-client" .
 docker images 
-docker run -d -it -v pystol_log:/var/log/ -p 22:22  --name pystol-client  pystol-client:latest
+docker run -d -it \
+-e KUBECONFIG=".kube/config" \
+-p 22:22 \
+-v pystol_log:/var/log/  \
+--name pystol-client pystol-client:latest
+docker cp kubeconfig/kubeconfig.yml  pystol-client:.kube/config
+docker exec -it pystol-client sh -c 'cat .kube/config'
+docker exec -it pystol-client sh -c 'env'
