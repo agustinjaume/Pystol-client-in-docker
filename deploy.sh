@@ -15,3 +15,4 @@ docker run -d -it \
 docker cp kubeconfig/kubeconfig.yml  pystol-client:.kube/config
 docker exec -it pystol-client sh -c 'cat .kube/config'
 docker exec -it pystol-client sh -c 'env'
+docker exec -it pystol-client sh -c 'kubectl cluster-info'

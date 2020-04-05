@@ -26,6 +26,12 @@ RUN pip3 install pystol
 RUN env
 RUN mkdir /kubeconfig
 RUN mkdir .kube
+RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+RUN  chmod 700 get_helm.sh
+RUN ./get_helm.sh
+RUN helm repo add brigade https://brigadecore.github.io/charts
+RUN helm repo add stable https://kubernetes-charts.storage.googleapis.com
+
 VOLUME $PYSTOL_LOG
 
 # Configure Ansible inventory
