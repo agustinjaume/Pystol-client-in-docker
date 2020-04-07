@@ -10,7 +10,7 @@ LABEL quay.expires-after=30w
 ARG PYSTOL_LOG=/var/log/
 RUN echo "root:root" | chpasswd
 USER root
-COPY flask-pykube-deployments /home/
+COPY flask-pykube /home/
 ENV  PYSTOL_LOG  $PYSTOL_LOG
 ENV  FLASK_APP   /home/app.py
 RUN yum upgrade -y

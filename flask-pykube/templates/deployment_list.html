@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-3">Welcome aboard, Sailor!</h1>
+    <p class="lead">This is our Kubernetes Deployments Dashboard</p>
+    <hr class="m-y-2">
+</div>
+<div>
+    <h1>Deployments</h1>
+    {% for deployment in deployments %}
+        <div class="card">
+            <div class="card-header">
+                <h3>
+                    {{ deployment.name }}
+                    <small>
+                        <a href="{{ url_for('deployments_get', name=deployment.name) }}" class="card-link">View</a>
+                    </small>
+                </h3>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
