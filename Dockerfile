@@ -1,7 +1,3 @@
-
-
-# We should use CentOS 8 as soon as possible but
-# the container fails when building.
 FROM registry.centos.org/centos/centos:centos8
 LABEL maintainer="Agustin jaume <agustin@ideasextraordinarias.es>"
 LABEL Owner project ="Carlos Camacho <carloscamachoucv@gmail.com>"
@@ -10,9 +6,9 @@ LABEL quay.expires-after=30w
 ARG PYSTOL_LOG=/var/log/
 RUN echo "root:root" | chpasswd
 USER root
-COPY flask-pykube /home/
+COPY pystol-ui /home/
 ENV  PYSTOL_LOG  $PYSTOL_LOG
-ENV  FLASK_APP   /home/app.py
+ENV  FLASK_APP  /home/run.py   
 RUN yum upgrade -y
 RUN yum install python3 python3-pip git -y
 RUN yum install  virtualenv -y
@@ -37,10 +33,11 @@ RUN pip3 install pykube
 
 VOLUME $PYSTOL_LOG
 
-# Configure Ansible inventory
 RUN mkdir /etc/ansible/ /ansible
 RUN echo "localhost ansible_connection=local" >> /etc/ansible/hosts
+RUN pwd
+RUN ls
+RUN cd /home/  && pip3 install -r requirements.txt
 EXPOSE 3000
-EXPOSE 5000
 EXPOSE 22
 CMD [ "/bin/bash" ]
