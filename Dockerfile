@@ -29,7 +29,7 @@ RUN helm repo add brigade https://brigadecore.github.io/charts
 RUN helm repo add stable https://kubernetes-charts.storage.googleapis.com
 RUN helm repo add bitnami https://charts.bitnami.com/bitnami
 RUN yum install python3-flask -y
-RUN pip3 install pykube
+RUN pip3 install flask_login flask_migrate flask_wtf flask_sqlalchemy gunicorn kubernetes 
 
 VOLUME $PYSTOL_LOG
 
