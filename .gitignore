@@ -2,3 +2,4 @@
 fuentes/
 kubeconfig/kubeconfig.yml
 Dev/
+deploy_local.sh
