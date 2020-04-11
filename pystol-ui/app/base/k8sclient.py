@@ -74,9 +74,6 @@ def state_nodes():
     return ret
 
 def state_namespaces():
-    # Configs can be set in Configuration class directly or using helper
-    # utility. If no argument provided, the config will be loaded from
-    # default location.
     config.load_kube_config()
     v1 = client.CoreV1Api()
     count = 10
