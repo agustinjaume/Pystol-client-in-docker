@@ -1,5 +1,7 @@
 ## Client fot Pystol in Docker
 
+This stack of tools allows us to carry out the following tests on our group of applications and high availability configurations of components
+
 <img src="./images/logo_readme.svg" alt="Kitten" title="A cute kitten" width="20%" height="20%" />
 
 This run will create a container called pystol-client with the latest version of Pystol.
@@ -8,7 +10,8 @@ The client have two function very important.
 - Is a terminal client Pystol 
 - It's have a intuitive Web Interface 
 
-<img src="./images/web-interface-pystol-pods.png" alt="Kitten" title="A cute kitten" width="40%" height="40%" />
+
+<img src="./images/web-interface-pystol-pods.png" alt="Kitten" title="A cute kitten" width="90%" height="90%" />
 
 - Clone repo
 
