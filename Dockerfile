@@ -9,6 +9,10 @@ USER root
 COPY pystol-ui /home/
 ENV  PYSTOL_LOG  $PYSTOL_LOG
 ENV  FLASK_APP  /home/run.py   
+ENV  UPLOAD_FOLDER '/home/upload/'
+ENV  UPLOAD_FOLDER_KUBECONFIG '/home/upload/kubeconfig/'
+
+
 RUN yum upgrade -y
 RUN yum install python3 python3-pip git -y
 RUN yum install  virtualenv -y
@@ -21,6 +25,8 @@ RUN pip3 install ansible==2.9.6
 RUN pip3 install pystol 
 RUN env
 RUN mkdir /kubeconfig
+RUN mkdir /home/upload/
+RUN mkdir /home/upload/kubeconfig
 RUN mkdir .kube
 RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
 RUN  chmod 700 get_helm.sh
