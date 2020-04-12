@@ -47,8 +47,11 @@ def hexagons_data():
         node_name      = node.metadata.name
         node_labels = node.metadata.labels
         # print(node_labels)
-        if node_labels['node-role.kubernetes.io/master'] == 'true':
-            node_role = "Master"
+        if "node-role.kubernetes.io/master" in node_labels:
+            if node_labels['node-role.kubernetes.io/master'] == 'true':
+                node_role = "Master"
+            else:
+                node_role = "Non master"
         else:
             node_role = "Non master"
 
