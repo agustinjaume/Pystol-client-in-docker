@@ -60,6 +60,11 @@ def api_web_terminal():
 def api_cluster_name_configured():
     return jsonify(cluster_name_configured())
 
+
+##  , methods=['GET', 'POST']
+
+
+
 ## Login & Registration
 
 @blueprint.route('/login', methods=['GET', 'POST'])

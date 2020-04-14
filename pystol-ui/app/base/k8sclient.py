@@ -59,7 +59,7 @@ def state_pods():
     pods = core_v1.list_pod_for_all_namespaces().items
     
     for pod in pods:
-        print(pod) 
+       # print(pod) 
         data_pods.append({'name': pod.metadata.name,
                                   'namespace':pod.metadata.namespace,
                                   'host_ip':pod.status.host_ip,
@@ -67,7 +67,7 @@ def state_pods():
                                   'phase':pod.status.phase})
    
     return data_pods
-    print(data_pods)
+   # print(data_pods)
 
 def web_terminal():
     config.load_kube_config()
