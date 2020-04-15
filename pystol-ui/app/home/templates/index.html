@@ -7,9 +7,6 @@
     <div class="container-fluid">
       <div class="fade-in">
 
-
-
-
         <!-- /.row-->
         <div class="row">
           <div class="col-md-12">
@@ -17,22 +14,28 @@
               <div class="card-header">Pods distribution</div>
               <div class="card-body">
                 <div class="row">
-
                   <!-- /.col-->
              {% for node in hexagons_data %}
-                  <div class="col-sm-6 col-lg-4">
-                    <div class="card">
-                      <div class="card-header">Node: {{ node.name }}
-                        <div class="card-header-actions"><a class="card-header-action" href="http://www.chartjs.org" target="_blank"><small class="text-muted">{{ node.role }}</small></a></div>
+               <!-- /.col-->
+                <div class="col-6 col-sm-6 col-lg-4">
+              <!-- card body -->
+                  <div class="card overflow-hidden">
+                    <div class="card-body p-0 d-flex align-items-center">
+                      <div class="bg-info p-2 mfe-3">
+                        <svg class="c-icon c-icon-xl" data-toggle="modal" data-target="#{{ node.name | replace(".","-") }}">
+                          <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-storage"></use>
+                        </svg>
                       </div>
-                      <div class="card-body">
-                        <div class="c-chart-wrapper">
+                      <div>
+                        <div class="text-muted text-uppercase font-weight-bold small" data-toggle="modal" data-target="#{{ node.name | replace(".","-") }}">{{ node.name }}</div>
+                      </div>
+                    </div>
+                    <div class="card-footer px-3 py-2">
                           <div class="honeycombs">
                           {% for pod in node.pods %}
-                          <!--<p>{{ pod.phase }}</p>-->
-                            <div class="comb" data-toggle="modal" data-target="#{{ pod.name }}">
+                            <div class="comb {{ pod.phase |lower }}" data-toggle="modal" data-target="#{{ pod.name | replace(".","-") }}">
                               <div class="front-content">
-                                <p></p>  
+                                <p></p>
                               </div>
                               <div class="back-content">
                                 <p></p>
@@ -40,11 +43,13 @@
                             </div>
                           {% endfor %}
                           </div>
-                        </div>
-                      </div>
                     </div>
                   </div>
-              {% endfor %}
+              <!-- card body -->
+
+                </div>
+                <!-- /.col-->
+             {% endfor %}
                   <!-- /.col-->
                 </div>
               </div>
@@ -53,283 +58,94 @@
         </div>
         <!-- /.row-->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">Nodes utilization</div>
-              <div class="card-body">
-                <div class="row">
-
-                  <!-- /.col-->
-                  <div class="col-sm-6 col-lg-4">
-                    <div class="card">
-                      <div class="card-header">Radar Chart
-                        <div class="card-header-actions"><a class="card-header-action" href="http://www.chartjs.org" target="_blank"><small class="text-muted">docs</small></a></div>
-                      </div>
-                      <div class="card-body">
-                        <div class="c-chart-wrapper">
-                          <canvas id="node-01"></canvas>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.col-->
-                  <!-- /.col-->
-                  <div class="col-sm-6 col-lg-4">
-                    <div class="card">
-                      <div class="card-header">Radar Chart
-                        <div class="card-header-actions"><a class="card-header-action" href="http://www.chartjs.org" target="_blank"><small class="text-muted">docs</small></a></div>
-                      </div>
-                      <div class="card-body">
-                        <div class="c-chart-wrapper">
-                          <canvas id="node-02"></canvas>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.col-->
-                  <!-- /.col-->
-                  <div class="col-sm-6 col-lg-4">
-                    <div class="card">
-                      <div class="card-header">Radar Chart
-                        <div class="card-header-actions"><a class="card-header-action" href="http://www.chartjs.org" target="_blank"><small class="text-muted">docs</small></a></div>
-                      </div>
-                      <div class="card-body">
-                        <div class="c-chart-wrapper">
-                          <canvas id="node-03"></canvas>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.col-->
-                  <!-- /.col-->
-                  <div class="col-sm-6 col-lg-4">
-                    <div class="card">
-                      <div class="card-header">Radar Chart
-                        <div class="card-header-actions"><a class="card-header-action" href="http://www.chartjs.org" target="_blank"><small class="text-muted">docs</small></a></div>
-                      </div>
-                      <div class="card-body">
-                        <div class="c-chart-wrapper">
-                          <canvas id="node-04"></canvas>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.col-->
-                  <!-- /.col-->
-                  <div class="col-sm-6 col-lg-4">
-                    <div class="card">
-                      <div class="card-header">Radar Chart
-                        <div class="card-header-actions"><a class="card-header-action" href="http://www.chartjs.org" target="_blank"><small class="text-muted">docs</small></a></div>
-                      </div>
-                      <div class="card-body">
-                        <div class="c-chart-wrapper">
-                          <canvas id="node-05"></canvas>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.col-->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- /.row-->
         <div class="row">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-header">Nodes &amp; Usage</div>
+              <div class="card-header">Usage</div>
               <div class="card-body">
                 <div class="row">
                   <div class="col-sm-12">
+             {% for node in hexagons_data %}
+                    <div class="card">
+
+                    <div class="card-body p-0 d-flex align-items-center">
+                      <div class="bg-info p-2 mfe-3">
+                        <svg class="c-icon c-icon-xl">
+                          <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-storage"></use>
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="text-muted text-uppercase font-weight-bold small">{{ node.name }}</div>
+                      </div>
+                    </div>
+
+                      <div class="card-footer">
+                        <div class="c-chart-wrapper">
+
+                      <div class="progress-group-bars">
+                        <div class="progress progress-xs">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: {{ node.state_info.pods.percentage }}%" aria-valuenow="{{ node.state_info.pods.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="progress progress-xs">
+                          <div class="progress-bar bg-success" role="progressbar" style="width: {{ node.state_info.cpu.percentage }}%" aria-valuenow="{{ node.state_info.cpu.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="progress progress-xs">
+                          <div class="progress-bar bg-warning" role="progressbar" style="width: {{ node.state_info.mem.percentage }}%" aria-valuenow="{{ node.state_info.mem.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="progress progress-xs">
+                          <div class="progress-bar bg-danger" role="progressbar" style="width: {{ node.state_info.storage.percentage }}%" aria-valuenow="{{ node.state_info.storage.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                    <!-- /.row-->
                     <div class="row">
-                      <div class="col-3">
-                        <div class="c-callout c-callout-info"><small class="text-muted">CPU usage</small>
-                          <div class="text-value-lg">9,123</div>
+                      <div class="col-sm-6 col-md-3">
+                        <div class="c-callout c-callout-info"><small class="text-muted">Pods usage</small>
+                          {% set pods_allocated = node.state_info.pods.allocated.magnitude | int %}
+                          {% set pods_allocatable = node.state_info.pods.allocatable.magnitude | int %}
+                          {% set pods_unit = node.state_info.pods.allocatable.units %}
+                          <div class="text-value-sm">{{ pods_allocated }}/{{ pods_allocatable }} {{ pods_unit }}</div>
                         </div>
                       </div>
                       <!-- /.col-->
-                      <div class="col-3">
+                      <div class="col-sm-6 col-md-3">
+                        <div class="c-callout c-callout-success"><small class="text-muted">CPU usage</small>
+                          {% set cpu_allocated = node.state_info.cpu.allocated.magnitude | int %}
+                          {% set cpu_allocatable = node.state_info.cpu.allocatable.magnitude | int %}
+                          {% set cpu_unit = node.state_info.cpu.allocatable.units %}
+                          <div class="text-value-sm">{{ cpu_allocated }}/{{ cpu_allocatable }} {{ cpu_unit }}</div>
+                        </div>
+                      </div>
+                      <!-- /.col-->
+                      <div class="col-sm-6 col-md-3">
                         <div class="c-callout c-callout-warning"><small class="text-muted">Memory usage</small>
-                          <div class="text-value-lg">22,643</div>
+                          {% set mem_allocated = node.state_info.mem.allocated.magnitude | int %}
+                          {% set mem_allocatable = node.state_info.mem.allocatable.magnitude | int %}
+                          {% set mem_unit = node.state_info.mem.allocatable.units %}
+                          <div class="text-value-sm">{{ mem_allocated }}/{{ mem_allocatable }} {{ mem_unit}}</div>
                         </div>
                       </div>
                       <!-- /.col-->
-                      <div class="col-3">
-                        <div class="c-callout c-callout-success"><small class="text-muted">IOPS</small>
-                          <div class="text-value-lg">78,623</div>
+                      <div class="col-sm-6 col-md-3">
+                        <div class="c-callout c-callout-danger"><small class="text-muted">Filesystem usage</small>
+                          {% set storage_allocated = node.state_info.storage.allocated.magnitude | int %}
+                          {% set storage_allocatable = node.state_info.storage.allocatable.magnitude | int %}
+                          {% set storage_unit = node.state_info.storage.allocatable.units %}
+                          <div class="text-value-sm">{{ storage_allocated }}/{{ storage_allocatable }} {{ storage_unit}}</div>
                         </div>
                       </div>
-                      <!-- /.col-->
-                      <div class="col-3">
-                        <div class="c-callout c-callout-danger"><small class="text-muted">Filesystem</small>
-                          <div class="text-value-lg">49,123</div>
-                        </div>
-                      </div>
-                      <!-- /.col-->
-
-
                     </div>
                     <!-- /.row-->
-                    <hr class="mt-0">
 
 
-
-                    <div class="progress-group mb-4">
-                      <div class="progress-group-prepend"><span class="progress-group-text">Master 1</span></div>
-                      <div class="progress-group-bars">
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-info" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-danger" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-warning" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                       </div>
                     </div>
 
-                    <div class="progress-group mb-4">
-                      <div class="progress-group-prepend"><span class="progress-group-text">Master 2</span></div>
-                      <div class="progress-group-bars">
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-info" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-danger" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-warning" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="progress-group mb-4">
-                      <div class="progress-group-prepend"><span class="progress-group-text">Master 3</span></div>
-                      <div class="progress-group-bars">
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-info" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-danger" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-warning" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="progress-group mb-4">
-                      <div class="progress-group-prepend"><span class="progress-group-text">Worker 1</span></div>
-                      <div class="progress-group-bars">
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-info" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-danger" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-warning" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="progress-group mb-4">
-                      <div class="progress-group-prepend"><span class="progress-group-text">Worker 2</span></div>
-                      <div class="progress-group-bars">
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-info" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-danger" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-warning" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </div>
-                    </div>
-
-
+                  {% endfor%}
 
                   </div>
                   <!-- /.col-->
-
                 </div>
               </div>
             </div>
@@ -342,13 +158,40 @@
 
 
 {% for node in hexagons_data %}
-{% for pod in node.pods %}
         <!-- /.modal-->
-    <div class="modal fade" id="{{ pod.name }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="{{ node.name | replace(".","-") }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h4 class="modal-title">{{ pod.name }}</h4>
+            <h4 class="modal-title">Node: {{ node.name }}</h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+            <p>Role: {{ node.role }}</p>
+            <p>CPU: {{ node.cpu }}</p>
+            <p>Memory: {{ node.mem }}</p>
+            <p>Storage: {{ node.ephstorage }}</p>
+            <p>Max pods: {{ node.maxpods }}</p>
+            <p>Architecture: {{ node.arch }}</p>
+            <p>Container runtime version: {{ node.crver }}</p>
+            <p>Kernel version: {{ node.kernelver }}</p>
+            <p>Kubeproxy version: {{ node.kubeproxyver }}</p>
+            <p>Kubelet version: {{ node.kubeletver }}</p>
+            <p>OS: {{ node.os }}</p>
+            </div>
+        </div>
+        <!-- /.modal-content-->
+        </div>
+        <!-- /.modal-dialog-->
+    </div>
+        <!-- /.modal-->
+{% for pod in node.pods %}
+        <!-- /.modal-->
+    <div class="modal fade" id="{{ pod.name | replace(".","-") }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title">Pod: {{ pod.name }}</h4>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
@@ -389,14 +232,10 @@
 <script src="/static/assets/js/jquery.honeycombs.js"></script>
 <!-- Honey -->
 
-<script src="/static/assets/vendors/@coreui/coreui-chartjs/js/coreui-chartjs.bundle.js"></script>
-<script src="/static/assets/js/charts.js"></script>
-
-
 <script>
 	$(document).ready(function() {
 	$('.honeycombs').honeycombs({
-		combWidth:40,
+		combWidth: 25,
 		margin: 0,
 		threshold: 3
 	});

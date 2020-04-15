@@ -36,9 +36,9 @@ def configure_database(app):
 def configure_logs(app):
     # soft logging
     try:
-        basicConfig(filename='error.log', level=DEBUG)
+        """         basicConfig(filename='error.log', level=DEBUG)
         logger = getLogger()
-        logger.addHandler(StreamHandler())
+        logger.addHandler(StreamHandler()) """
     except:
         pass
 

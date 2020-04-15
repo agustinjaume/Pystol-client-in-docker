@@ -14,6 +14,7 @@ from app.base.k8sclient import os, state_namespaces, state_nodes, state_pods, cl
 from app.base.allocated import compute_allocated_resources
 from app.base.hexa import hexagons_data
 
+
 @blueprint.route('/index')
 @login_required
 def index():
@@ -25,6 +26,7 @@ def index():
                            hexagons_data = hexagons_data(),
                            cluster_name_configured  = cluster_name_configured(),
                           )
+
 
 @blueprint.route('/<template>')
 def route_template(template):
@@ -45,15 +47,15 @@ def route_template(template):
     except:
         return render_template('page-500.html'), 500
 
+
 @blueprint.route('/uploadkubeconfig', methods = ['POST'])
 def upload_image():
-    print("hola")
     try:
         if request.method == "POST":
             file = request.files['kubeconfig']
             filename = file.filename
-            file.save(os.path.join(os.getenv('UPLOAD_FOLDER_KUBECONFIG'), filename))
-            os.rename(os.getenv('UPLOAD_FOLDER_KUBECONFIG') + "/" + filename,'.kube/config') 
+            file.save(os.path.join("/tmp/", filename))
+            os.rename("/tmp/" + filename,'.kube/config') 
             return redirect( '/pystol-update-kubeconfig')
     except TemplateNotFound:
         return render_template('page-404.html'), 404
