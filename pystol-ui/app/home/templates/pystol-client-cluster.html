@@ -1,0 +1,72 @@
+{% extends "base-site.html" %}
+
+{% block title %} Forms {% endblock %} 
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="fade-in">
+          <!-- /.row-->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header"><strong>Status client in cluster</strong> </div>
+                <div class="card-body">
+                  <div class="card-header">
+                    {% if cluster_name_configured |length %}
+                    <span class="badge badge-success">Connected to {{cluster_name_configured  | replace('[', '')| replace(']', '')}}</span>
+                    
+                    
+                    <form class="form-horizontal" action="/pystol-client-cluster-action"  method="POST">
+                      <div class="form-group">
+                        <input  type="hidden" class="form-control" id="actionclient" name="actionclient" value="install" >
+                      </div>
+                      
+                      <div class="card-footer">
+                        <button class="btn btn-sm btn-primary" type="submit"> Instalar Cliente </button>
+                      </div>
+                    </form>
+
+                   
+                    <form class="form-horizontal" action="/pystol-client-cluster-action"  method="POST">
+                      <div class="form-group">
+                        <input  type="hidden" class="form-control" id="actionclient" name="actionclient" value="uninstall" >
+                      </div>
+                      
+                      <div class="card-footer">
+                        <button class="btn btn-sm btn-primary" type="submit"> Purge Pystol Client</button>
+                      </div>
+                    </form>
+                   
+                    {% else %}
+                     <span class="badge badge-danger">Es necesario previamente conectar conectarnos con el cluster desde la seccón: <a href="/pystol-update-kubeconfig">Change cluster</a></span>
+                    {% endif %}
+
+
+                    <div class="card-footer">
+                    Result: 
+                    
+                    {% if result |length %}
+                      {{ result }}
+                    {% else %}                  
+                    {% endif %}
+                  </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            <!-- /.col-->
+          </div>
+         
+        </div>
+          <!-- /.row-->
+    </div>
+
+{% endblock content %}
+
+{% block javascripts %}
+<!-- Specific Page JS goes HERE  -->
+{% endblock javascripts %}

@@ -5,12 +5,12 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from app.home import blueprint
-from flask import render_template, redirect, url_for, jsonify, request
+from flask import render_template, redirect, url_for, jsonify, request, json
 from flask_login import login_required, current_user
 from app import login_manager
 from jinja2 import TemplateNotFound
 from app.base.k8s import list_actions, show_actions
-from app.base.k8sclient import os, state_namespaces, state_nodes, state_pods, cluster_name_configured
+from app.base.k8sclient import os, state_namespaces, state_nodes, state_pods, cluster_name_configured, client_pystol
 from app.base.allocated import compute_allocated_resources
 from app.base.hexa import hexagons_data
 
@@ -61,3 +61,21 @@ def upload_image():
         return render_template('page-404.html'), 404
     except:
         return render_template('page-500.html'), 500
+
+
+@blueprint.route('/pystol-client-cluster-action', methods = ['POST', 'GET'])
+def route_client_pystol():
+    """try:"""
+    if request.method == "GET":
+            return redirect( 'pystol-client-cluster')
+    if (request.method == "POST"):  
+        print("entre por POST")
+        print(request.form)
+        actionclient = request.form['actionclient']
+        result = client_pystol(actionclient)
+        print("route" + result)    #flask run --host=0.0.0.0 --port=3000
+        return render_template('pystol-client-cluster.html', 
+                               compute_allocated_resources = compute_allocated_resources(),
+                               cluster_name_configured  = cluster_name_configured(),
+                               result = result, 
+                               )    

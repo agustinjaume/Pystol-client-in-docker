@@ -85,3 +85,20 @@ def cluster_name_configured():
     output  = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
     ret.append(output.decode('utf-8'))
     return ret
+
+def client_pystol(action_client):
+    if 'install' in action_client:
+        print("contain    " + action_client)
+        command = "pystol deploy"  # | tr -d '\n'"
+    if 'uninstall' in action_client:
+        print("not containt " + action_client)
+        command = "pystol purge -y " #  | tr -d '\n\n'"
+        
+    print("execcommand:   " + command ) 
+    output  = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
+    output_deploy = output.decode('utf-8')
+    #print(output_deploy)
+    return output_deploy
+    """   try:
+     except:
+        print("Cant find the clustername at all")"""
