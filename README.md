@@ -11,7 +11,7 @@ The client have two function very important.
 - It's have a intuitive Web Interface 
 
 
-<img src="./images/web-interface-pystol-pods.png" alt="Kitten" title="A cute kitten" width="90%" height="90%" />
+<img src="https://github.com/pystol/pystol-docs/blob/master/assets/images/dashboard.png" alt="Kitten" title="A cute kitten" width="90%" height="90%" />
 
 - Clone repo
 
